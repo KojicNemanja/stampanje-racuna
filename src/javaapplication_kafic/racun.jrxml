@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="racun" pageWidth="226" pageHeight="651" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c8a38612-e463-4070-b73e-2ecfb395f270">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaApplication_Projekat\\src\\javaapplication_kafic\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="datumIVreme" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+    *
+FROM
+      racun]]>
+	</queryString>
+	<field name="naziv" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kolicina" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cena" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ukupno" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="racun">
+		<groupFooter>
+			<band height="60">
+				<line>
+					<reportElement x="0" y="7" width="186" height="1" uuid="05ac7da2-695d-4a9a-a360-16621e6150f4"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="0" y="17" width="100" height="20" uuid="c8be6200-ab9c-4ef8-b03a-f03a1dc13521"/>
+					<text><![CDATA[Za uplatu:]]></text>
+				</staticText>
+				<elementGroup/>
+				<subreport>
+					<reportElement x="0" y="20" width="186" height="17" uuid="6dab15a3-47d3-4fbc-9e54-d345d861fa22"/>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "zaUplatu.jasper"]]></subreportExpression>
+				</subreport>
+				<textField>
+					<reportElement x="0" y="40" width="100" height="20" uuid="2ecb0200-2557-496a-820f-6eeb4fc74011"/>
+					<textFieldExpression><![CDATA[$P{datumIVreme}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="53" width="186" height="1" uuid="fcd2142b-5f12-4a38-8d08-9f70f0529306"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<subreport>
+				<reportElement x="-24" y="1" width="60" height="53" uuid="d1fb5e26-2cbd-462e-b263-5971e19b46f7"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "zaglavlje.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="186" height="20" uuid="22682ed2-bf43-43a0-bcbe-fcfef96fde6e"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="12" height="20" uuid="a9c454ba-e310-4334-933b-95e0f7f0c0a9"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kolicina}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="22" y="20" width="78" height="20" uuid="b54e62b7-2213-4b2e-89bd-9d6654652d40"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cena}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="20" width="86" height="20" uuid="80eb0e86-42ae-4cc6-b5a2-a096c0129338"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ukupno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="20" width="10" height="20" uuid="8d4b55ff-0b43-4b60-89a7-e5eb5d3ea60f"/>
+				<text><![CDATA[x]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
